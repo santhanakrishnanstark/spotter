@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link href="https://fonts.googleapis.com/css?family=Acme|Dosis|Josefin+Sans|Raleway" rel="stylesheet">
+    <style>
+        .subhead{
+            font-size: 22px;
+            line-height: 0.5em;
+        }
+        ul{font-size: 16px;}
+        img{
+            border-radius: 25px;
+        }
+        
+        @media (max-width:575px){ 
+            .ig{margin-top: 1em;}
+            .cake{display: ;}
+        }
+        @media (min-width:576px){
+            .ig{margin-top: 1em;}
+             .cake{display: ;}
+        }
+         @media (min-width:768px){
+            .ig{margin-top: 1em;}
+             .cake{display: inline;}
+        }
+         @media (min-width:992px){
+            .cake{display: inline-block;}
+        }
+         @media (min-width:1200px){
+            .cake{display: inline-block;}
+        }
+     
+        #clockdiv{
+	font-family: sans-serif;
+	color: #fff;
+	display: inline-block;
+	font-weight: 200;
+	text-align: center;
+	font-size: 15px;
+}
+#clockdiv > div{
+	padding: 5px;
+	border-radius: 5px;
+	background: #9b59b6;
+	display: inline-block;
+}
+#clockdiv div > span{
+	padding: 10px;
+	border-radius: 5px;
+	display: inline-block;
+}
+smalltext{
+	padding-top: 5px;
+	font-size: 15px;
+}
+     .flipInX {
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipInX;
+  animation-name: flipInX;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+         animation-iteration-count: infinite;
+  }
+  @-webkit-keyframes flipInX {
+  0% {
+  -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+  transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  opacity: 0;
+  }
+  40% {
+  -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+  transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  }
+  60% {
+  -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+  transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+  opacity: 1;
+  }
+  80% {
+  -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+  100% {
+  -webkit-transform: perspective(400px);
+  transform: perspective(400px);
+  }
+  }
+  @keyframes flipInX {
+  0% {
+  -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+  transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  opacity: 0;
+  }
+  40% {
+  -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+  transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  }
+  60% {
+  -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+  transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+  opacity: 1;
+  }
+  80% {
+  -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+  100% {
+  -webkit-transform: perspective(400px);
+  transform: perspective(400px);
+  }
+  } 
+        .modal{top:5%
+            width: 1000px;
+         max-width: 100%;
+            height: 600px;
+            max-height: 100%;
+            overflow: auto;
+            ;}
+        .modal-header{background-color: #8e44ad;
+         color: white;}
+        nav{font-family: 'Dosis', sans-serif;}
+        p{font-family: 'Raleway', sans-serif;
+           }
+        .sub{line-height: 1vh}
+        h1,h5{font-family: 'Acme', sans-serif;}
+        h2{font-family: 'Josefin Sans', sans-serif; color: #34495e}
+        
+    </style>
+    <script>
+        $('[data-toggle="tooltip"]').tooltip();
+    </script>
+  <body>
+      
+      <div class="container-fluid">
+      <!-- Nav Bar Begin -->
+     
+          <nav class=" navbar navbar-toggleable-sm navbar-light text-secondary">
+            <div class="container">
+                <img class="mr-5" src="img/ss.png" data-toggle="tooltip" data-placement="right" title="My Spotter">
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#mainNav" >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                 <div class="navbar-nav">
+                    <a style="color: #8e44ad; font-weight: 500"  class="nav-item nav-link active" href="index.html"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Home</a>
+                <a class="nav-item nav-link" data-toggle="modal" data-target="#Login" href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Login</a>
+                     <a class="nav-item nav-link " data-toggle="modal" data-target="#Register" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;SignUp</a>
+                     
+                </div>
+                </div>
+              </div>
+          </nav>
+      
+      <!-- Nav Bar End -->
+    
+          <!-- Login Model Begin-->
+          
+          <div class="modal fade" id="Login">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                     <form action="Login" method="post">
+                        <div class="modal-header">
+                            <h4 class="modal-title">LogIn </h4>
+                            <button class="close" style="color: white" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                              
+                                <div class="form-group mt-4">
+                                    <label for="username"> Enter Username : </label>
+                                    <input type="text" name="loginname" placeholder="username" class="form-control">
+                                   </div> 
+                                 <div class="form-group mt-4">
+                                    <label for="password"> Enter Password : </label>
+                                    <input type="password" name="loginpass" placeholder="password" class="form-control">
+                                   </div>    
+                           
+                        </div>
+                        <div class="modal-footer mt-4">
+                            <button class="btn btn-secondary"  data-dismiss="modal">Close</button>
+                           <input type="submit" class="btn text-white" style="background-color: #8e44ad" value="Login">
+                        </div>
+                         </form>
+                    </div>
+              </div>
+          </div>
+          
+          <!-- Login Model End-->
+          
+           <!-- Register Model Begin-->
+          
+          <div class="modal fade" id="Register">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                     <form action="Register" method="post">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Register </h3>
+                            <button class="close" style="color: white" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                              
+                                <div class="form-group mt-4">
+                                    <label for="username"> Enter Username : </label>
+                                    <input type="text" name="t1" placeholder="username" class="form-control">
+                                   </div> 
+                                 <div class="form-group mt-4">
+                                    <label for="password"> Enter Password : </label>
+                                    <input type="password" name="p1" placeholder="password" class="form-control">
+                                   </div> 
+                                    <div class="form-group mt-4">
+                                    <label for="password"> Retype Password : </label>
+                                    <input type="password" name="p2" placeholder="password" class="form-control">
+                                   </div> 
+                                   <div class="form-group mt-4">
+                                    <label for="dob"> Date of Birth : </label>
+                                    <input type="date" name="dob" class="form-control">
+                                   </div> 
+                                    <div class="form-group mt-4">
+                                    <label for="email"> Email : </label>
+                                    <input type="email" name="email" placeholder="your email id" class="form-control">
+                                   </div> 
+                                  
+                        <div class="modal-footer mt-4">
+                            <button class="btn btn-secondary"  data-dismiss="modal">Close</button>
+                            <input type="submit" style="background-color: #8e44ad" class="btn text-white" value="Register">
+                        </div>
+                         </form>
+                        </div>
+                    </div>
+              </div>
+          </div>
+          
+          <!-- Register Model End-->
+
+          
+      </div>
+      <div class="container-fluid">
+          <div class="row text-center mt-5 container-fluid">
+              <div class="col-md-1 col-sm-12"></div>
+              <div class="col-md-6 col-sm-12">
+          <h1 class="display-4" style="color: #8e44ad; font-family: 'Ubuntu', sans-serif;"> Spotter</h1>
+         <p class="text-muted sub" style=" font-family: 'Alegreya Sans', sans-serif;">A new way to remind your friend </p> 
+          <p class="text-muted sub " style=" font-family: 'Alegreya Sans', sans-serif;" >and family members birthday.</p>
+              </div>
+              <div class="col-md-5 col-sm-12 countdown">
+               <!-- Countdown Ui Start -->
+                  <h2>New Year Count !</h2>
+                  <div id="clockdiv">
+                      <div>
+	<span class="days" id="day"></span>
+	<div class="smalltext">Days</div>
+</div>
+                      <div>
+	<span class="hours" id="hour"></span>
+	<div class="smalltext">Hours</div>
+</div>
+                      <div>
+	<span class="minutes" id="minute"></span>
+	<div class="smalltext">Minutes</div>
+</div>
+                      <div class="flipInX" id="ani">
+	<span class="seconds" id="second"></span>
+	<div class="smalltext">Seconds</div>
+</div>
+                  </div>
+
+                  <p id="demo"></p>
+
+                  <script>
+
+                      var deadline = new Date("jan 01, 2018 00:00:00").getTime();
+
+                      var x = setInterval(function() {
+
+var now = new Date().getTime();
+var t = deadline - now;
+var days = Math.floor(t / (1000 * 60 * 60 * 24));
+var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((t % (1000 * 60)) / 1000);
+document.getElementById("day").innerHTML =days ;
+document.getElementById("hour").innerHTML =hours;
+document.getElementById("minute").innerHTML = minutes; 
+document.getElementById("second").innerHTML =seconds; 
+if (t < 0) {
+		clearInterval(x);
+		document.getElementById("demo").innerHTML = "Wish YOU Happy New Year ! ! !";
+		document.getElementById("day").innerHTML ='2';
+		document.getElementById("hour").innerHTML ='0';
+		document.getElementById("minute").innerHTML ='1' ; 
+		document.getElementById("second").innerHTML = '8'; }
+}, 1000);
+                  </script>
+
+                  
+                   <!-- Countdown Ui End -->
+              </div>
+              </div>
+          <div class="row text-center mt-5">
+            <div class="container">
+                <div class="card">
+                    <div class="card-block">
+                        <h5 class="card-title">Important News !</h5>
+                        <p class="card-text"> Hello everyone ! am not completed yet .... So please be patient, am trying to give more features and functionalities to this site. </p>
+                        <a class="btn" style="background-color: #34495e; color: white" href="newyear.html">Surpise</a>
+                    </div>
+                </div>
+              </div>
+          </div>
+          
+          <div class="container">
+         <div class="row text-center justify-content-center mt-5">
+           
+              <div class="col-md-12 col-lg-4">
+              <img  class="img-responsive ig" src="img/bt2.jpg">
+              </div>
+              <div class="col-md-12 col-lg-4 cake">
+              <img  class="img-responsive ig" src="img/mi.gif">
+              </div>
+               <div class="col-md-12 col-lg-4">
+                   <img  class="img-responsive ig" src="img/bt3.jpg">
+              </div>
+          </div>
+              </div>
+      </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>
