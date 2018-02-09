@@ -21,10 +21,7 @@ public class StoreEntry extends HttpServlet {
 		try {
 			PrintWriter out = response.getWriter();
 			
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","stark","stark");
-			Statement st = con.createStatement();
+			Statement st = OracleDb.getConnected();
 			
 			//int no = Integer.parseInt(request.getParameter("t1"));
 			String name = request.getParameter("t2");

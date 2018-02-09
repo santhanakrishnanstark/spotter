@@ -1,3 +1,4 @@
+<%@page import="com.login.OracleDb"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Statement"%>
@@ -5,7 +6,9 @@
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%String name=" "; %>
+     <%String name=" ";
+     Statement st = OracleDb.getConnected();
+     %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -53,6 +56,8 @@ if(session.getAttribute("username")==null){
               border-bottom-right-radius: 10px;
           }
           h1{font-size: 1.5em;}
+          
+          a{text-decoration: none; color: black}
           .add{background-color: red; color: white; border-radius: 50%; height: 50px; width: 50px;box-shadow:2px 5px 5px grey; }
           .icn{margin-left: 0.6em;
                 margin-top: 0.5em;}
@@ -188,9 +193,6 @@ if(session.getAttribute("username")==null){
          		boolean deleteclicked = request.getParameter("del")!=null?true:false;
          	if(deleteclicked){
          		int sid = Integer.parseInt(request.getParameter("del"));
-         		Class.forName("oracle.jdbc.driver.OracleDriver");
-   		    Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","stark","stark");
-   		    Statement st = con.createStatement();
    			int res = st.executeUpdate("delete from stickynotes where sid='"+sid+"' ");
          		
          	}
@@ -204,9 +206,6 @@ if(session.getAttribute("username")==null){
     
             <div class="row ml-5">
             <%  try {
-                Class.forName("oracle.jdbc.OracleDriver");
-      		   Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","stark","stark");
-      		Statement st = con.createStatement();
             String id = session.getAttribute("rid").toString();
      		int rid = Integer.parseInt(id);
      		ResultSet rs = st.executeQuery("select * from stickynotes where regid='"+rid+"' ");
@@ -251,11 +250,7 @@ if(session.getAttribute("username")==null){
       			String title  =request.getParameter("stitle");
       			String notes = request.getParameter("txtarea");
       			try{
-      			// db connection 
-      			Class.forName("oracle.jdbc.driver.OracleDriver");
-			    Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","stark","stark");
-			    Statement st = con.createStatement();
-				
+      			
 			    int res=st.executeUpdate("insert into stickynotes values(SINC.nextval,'"+title+"','"+notes+"',sysdate,'"+id+"')");
         		if(res>=1) {
     				out.println("<script> alert('Notes Added !');  window.location='stickynotes.jsp'; </script>");

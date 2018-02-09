@@ -9,10 +9,9 @@ import java.sql.Statement;
 
 public class CheckLoop {
 	
-	static Connection con;
-	static Statement st;
 	static MailProgram mp = new MailProgram();
-	static void connectdb() {
+	static Statement st = OracleDb.getConnected(); 
+	/*static void connectdb() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		
@@ -21,15 +20,10 @@ public class CheckLoop {
 		}catch(Exception e) {
 			System.out.println(e);
 		}
-	}
+	}*/
 	
-	public static void main(String []arg) throws SQLException{
-		
-	   //  start();
-	}
-
 	public static void start() throws SQLException {
-		connectdb();
+		// connectdb();
 		
 		  ResultSet rid = st.executeQuery("select e.name as enam,r.email as rema from register r,entry e where e.regid=r.regid and to_char(sysdate,'MM-DD')=to_char(e.dob,'MM-DD') ");
          System.out.println("running");
@@ -44,6 +38,7 @@ public class CheckLoop {
 		}
 
 	private static void checkFmail() throws SQLException {
+		
 		 ResultSet rid2 = st.executeQuery("select r.username as rname, r.email as rmail, f.fmessage as fmsg from register r,fmail f where f.regid=r.regid  and  to_char(sysdate,'MM-DD-YY')=to_char(f.fdate,'MM-DD-YY') ");
 		 while(rid2.next()) {
 			 String uname = rid2.getString("rname").toString();

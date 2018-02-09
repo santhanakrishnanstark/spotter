@@ -1,8 +1,10 @@
+<%@page import="com.login.OracleDb"%>
 <%@page import="com.login.CheckLoop"%>
 <%@page import="com.login.LoginAccess"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="java.sql.*" %>
+    <%Statement st = OracleDb.getConnected(); %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -19,9 +21,14 @@
               nav .container{width: 100%;}
           }
           
-          a{
-             text-decoration: none;
+          nav > .container{
+              border-bottom: 2px solid #34495e;
+              border-bottom-left-radius: 40px;
+              border-bottom-right-radius: 10px;
           }
+          h1{font-size: 1.5em;}
+          
+          a{text-decoration: none; color: black}
  			.en{
              text-decoration: none; background-color: #8e44ad;
           }
@@ -70,6 +77,18 @@
           </div>
       </nav>
       
+      <!-- Delete record code -->
+      <%
+      		
+      		boolean hasid =  request.getParameter("del")!=null?true:false;
+      		
+      		if(hasid){
+      			String id = request.getParameter("del");
+      			int res = st.executeUpdate("delete from entry where sid='"+id+"' ");
+      			
+      		}
+      %>
+       <!-- Delete record code -->
    
       <div class="container mt-4">
           <i class="fa fa-reply mb-3 ml-5" style="color: #8e44ad; font-size: 22px" aria-hidden="true"> Back</i>
@@ -124,11 +143,6 @@
            	  
            	  
               try {
-                  Class.forName("oracle.jdbc.OracleDriver");
-         		
-         		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","stark","stark");
-         		Statement st = con.createStatement();
-         		//HttpSession session = request.getSession();
          		String id = session.getAttribute("rid").toString();
          		
          		int rid = Integer.parseInt(id);
@@ -137,9 +151,9 @@
          	//	ResultSet rs = st.executeQuery("select * from entry where regid='"+rid+"' ");
          	
          	 // To order the table by ascending date of full entry table
-         	  ResultSet rs = st.executeQuery("select * from entry where regid ='"+rid+"' order by to_char(dob,'MM-DD')  ");
+         	 // ResultSet rs = st.executeQuery("select * from entry where regid ='"+rid+"' order by to_char(dob,'MM-DD')  ");
      		 
-     		// ResultSet rs = st.executeQuery("select * from entry where to_char(sysdate,'MM-DD') < to_char(dob,'MM-DD') and regid='"+rid+"' order by to_char(dob,'MM') ");
+     	 ResultSet rs = st.executeQuery("select * from entry where to_char(sysdate,'MM-DD') < to_char(dob,'MM-DD') and regid='"+rid+"' order by to_char(dob,'MM') ");
          	while(rs.next()) {
      			
      		%>
@@ -159,7 +173,7 @@
                           <%=rs.getString("phno") %>
                        </td>
                        <td> 
-                       	  <a href="editprofile.jsp?e=<%=rs.getString("sid")%>" type="button" class="en text-white btn-sm"> Edit</a></td>
+                       	  <a href="editpeople.jsp?e=<%=rs.getString("sid")%>" type="button" class="en text-white btn-sm"> Edit</a></td>
                        </td>
                        <td> 
                        	   <a href="userpage.jsp?del=<%=rs.getString("sid")%>" type="button" class="en btn btn-secontary text-white btn-sm"> X</a></td>

@@ -9,23 +9,12 @@ import javax.servlet.http.HttpSession;
 
 public class LoginAccess {
 
-   static	Connection con;
-	static Statement st;
-	static void connectdb() {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-		
-		 con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","stark","stark");
-		 st = con.createStatement();
-		}catch(Exception e) {
-			System.out.println(e);
-		}
-	}
+	Statement st = OracleDb.getConnected();
 	
 	public boolean checkAccount(String user,String pas) {
 		
 		try {
-		connectdb();
+		
 		ResultSet rs = st.executeQuery("select * from register where username='"+user+"' and password='"+pas+"' ");
 		if(rs.next()) {
 		
@@ -42,7 +31,7 @@ public class LoginAccess {
 	
 	public int getId(String unam,String pas) {
 		try {
-			connectdb();
+			
 			ResultSet rs = st.executeQuery("select * from register where username='"+unam+"' and password='"+pas+"' ");
 			if(rs.next()) {
 				

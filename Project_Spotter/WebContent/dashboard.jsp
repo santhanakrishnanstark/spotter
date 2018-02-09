@@ -1,3 +1,4 @@
+<%@page import="com.login.OracleDb"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -154,9 +155,7 @@ if(session.getAttribute("username")==null){
       			String format="yy-MM-dd";
       			
       			// db connection 
-      			Class.forName("oracle.jdbc.driver.OracleDriver");
-			    Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","stark","stark");
-			    Statement st = con.createStatement();
+      			Statement st = OracleDb.getConnected();
 				
 			    int res = st.executeUpdate("insert into fmail values(finc.nextval,to_date('"+fdate+"','"+format+"'),'"+message+"','"+id+"') ");
       			if(res>=1){

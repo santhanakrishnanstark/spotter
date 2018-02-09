@@ -1,3 +1,4 @@
+<%@page import="com.login.OracleDb"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -15,11 +16,14 @@
           @media (max-width:576px){
               nav .container{width: 100%;}
           }
-          nav > .container{
+         nav > .container{
               border-bottom: 2px solid #34495e;
               border-bottom-left-radius: 40px;
               border-bottom-right-radius: 10px;
           }
+          h1{font-size: 1.5em;}
+          
+          a{text-decoration: none; color: black}
          
       </style>
       
@@ -82,11 +86,7 @@
       		 if(session.getAttribute("username")!=null){
               	  
               try {
-                  Class.forName("oracle.jdbc.OracleDriver");
-         		
-         		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","stark","stark");
-         		Statement st = con.createStatement();
-         		//HttpSession session = request.getSession();
+            	  Statement st = OracleDb.getConnected();
          		String id = session.getAttribute("rid").toString();
          		
          		int rid = Integer.parseInt(id);
